@@ -18,11 +18,13 @@ const Form = (props) => {
     if(props.isUpdate){
     axios.put(url,data)
       .then(res => console.log(res));
-      window.location.reload();
+      props.toggle();
+      //window.location.reload();
         }else{
           axios.post(url,data)
       .then(res => console.log(res));
-        window.location.reload();
+      props.toggle();
+       // window.location.reload();
         } 
   };
   return (
@@ -78,7 +80,7 @@ const url = `/projects/${props.match.params.pid}`;
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Create New Project</ModalHeader>
         <ModalBody>
-          <Form name={name} description={description} url={newUrl} isUpdate={isUpdate} pid={pid}  />
+          <Form name={name} description={description} url={newUrl} isUpdate={isUpdate} pid={pid} toggle={toggle} />
         </ModalBody>
       </Modal>
     <div className="row">

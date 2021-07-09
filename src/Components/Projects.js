@@ -20,11 +20,11 @@ const Form = (props) => {
     if(props.isUpdate){
     axios.put(url,data)
       .then(res => console.log(res));
-      window.location.reload();
+      props.toggle();
         }else{
           axios.post(url,data)
       .then(res => console.log(res));
-        window.location.reload();
+      props.toggle();
         } 
   };
   return (
@@ -83,7 +83,7 @@ const Projects = () => {
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Create New Project</ModalHeader>
         <ModalBody>
-          <Form name={name} description={description} duration={duration} status={status} url={newUrl} isUpdate={isUpdate} />
+          <Form name={name} description={description} duration={duration} status={status} url={newUrl} isUpdate={isUpdate} toggle = {toggle} />
         </ModalBody>
       </Modal>
       <div className="row">
